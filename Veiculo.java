@@ -2,16 +2,18 @@
 public class Veiculo{
     private String marca;
     private String modelo;
-    private String cor;
-    private String tipoCombustivel;
-    private Cliente cliente;
+    private int ano;
+    private int numero_chassi;
+    private Origem origem;
+    private String matricula;
     
-    public Veiculo(String marca, String modelo, String cor, String tipoCombustivel, Cliente cliente) {
+    public Veiculo(String marca, String modelo, int ano, int numero_chassi, Origem origem, String matricula) {
         this.marca = marca;
         this.modelo = modelo;
-        this.cor = cor;
-        this.tipoCombustivel = tipoCombustivel;
-        this.cliente = cliente;
+        this.ano = ano;
+        this.numero_chassi = numero_chassi;
+        this.origem = origem;
+        this.matricula = matricula;
     }
 
     public String getMarca() {
@@ -30,29 +32,37 @@ public class Veiculo{
         this.modelo = modelo;
     }
 
-    public String getCor() {
-        return cor;
+    public int getAno() {
+        return ano;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
-    public String getTipoCombustivel() {
-        return tipoCombustivel;
+    public int getNumero_chassi() {
+        return numero_chassi;
     }
 
-    public void setTipoCombustivel(String tipoCombustivel) {
-        this.tipoCombustivel = tipoCombustivel;
+    public void setNumero_chassi(int numero_chassi) {
+        this.numero_chassi = numero_chassi;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Origem getOrigem() {
+        return origem;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setOrigem(Origem origem) {
+        this.origem = origem;
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+    
     
 }

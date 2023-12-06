@@ -1,22 +1,19 @@
 
 public class Cliente {
     private String nome;
-    private char data_de_nascimento;
+    private int dataNascimento;
     private String morada;
     private int nif;
     private String numero_cc;
     private Float salario;
-    private Veiculo veiculo;
-    
-    public Cliente(String nome, char data_de_nascimento, String morada, int nif, String numero_cc, Float salario,
-            Veiculo veiculo) {
+
+    public Cliente(String nome, int dataNascimento, String morada, int nif, String numero_cc, Float salario) {
         this.nome = nome;
-        this.data_de_nascimento = data_de_nascimento;
+        this.dataNascimento = dataNascimento;
         this.morada = morada;
         this.nif = nif;
         this.numero_cc = numero_cc;
         this.salario = salario;
-        this.veiculo = veiculo;
     }
 
     public String getNome() {
@@ -27,12 +24,12 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public char getData_de_nascimento() {
-        return data_de_nascimento;
+    public int getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_de_nascimento(char data_de_nascimento) {
-        this.data_de_nascimento = data_de_nascimento;
+    public void setDataNascimento(int dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getMorada() {
@@ -67,13 +64,6 @@ public class Cliente {
         this.salario = salario;
     }
 
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
     
     
 }
