@@ -55,4 +55,11 @@ public class Administrador {
     }
 
     
+
+    @Override
+    public String toString() {
+        return "Administrador [iniciais=" + iniciais + ", tipoContrato=" + tipoContrato + ", habilitacoes="
+                + habilitacoes + ", inicioContrato=" + inicioContrato + ", fimContrato=" + fimContrato + "]";
+    } 
+    
 }

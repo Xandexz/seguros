@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class Veiculo{
     private String marca;
@@ -6,6 +7,8 @@ public class Veiculo{
     private int numero_chassi;
     private Origem origem;
     private String matricula;
+
+    private Cliente[] cliente = new Cliente[1];
     
     public Veiculo(String marca, String modelo, int ano, int numero_chassi, Origem origem, String matricula) {
         this.marca = marca;
@@ -62,6 +65,20 @@ public class Veiculo{
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
+    }
+
+    public Cliente[] getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente[] cliente) {
+        this.cliente = cliente;
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo [marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", numero_chassi=" + numero_chassi
+                + ", origem=" + origem + ", matricula=" + matricula + ", cliente=" + Arrays.toString(cliente) + "]";
     }
     
     
