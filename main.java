@@ -45,9 +45,13 @@ public class main {
 
     }
 
-    public void menuPrincipal(){
+    public void menuPrincipal(Cliente cliente){
         int option = 0;
         // escrever aqui o codigo onde ele cadastra o cliente e o veiculo fora do ciclo
+        // cliente.veiculo.add(veiculo)
+        //Veiculo veiculo = new veiculo(...)
+
+        // if()
         Scanner menu = new Scanner(System.in);
         do {
             Scanner menu2 = new Scanner(System.in);
