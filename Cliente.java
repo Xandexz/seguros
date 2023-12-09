@@ -8,8 +8,10 @@ public class Cliente {
     private String numero_cc;
     private Float salario;
 
-    private ArrayList<Veiculo> veiculos = new ArrayList<>();
+    //Lista onde assucia o veiculo ao cliente
+    public static ArrayList<Veiculo> veiculos = new ArrayList<>();
 
+    //Construtor
     public Cliente(String nome, String dataNascimento, String morada, int nif, String numero_cc, Float salario) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -20,6 +22,7 @@ public class Cliente {
         veiculos = new ArrayList<>();
     }
 
+    //Getters and setters
     public String getNome() {
         return nome;
     }

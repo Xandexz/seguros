@@ -10,6 +10,7 @@ public class Veiculo{
 
     private Cliente[] cliente = new Cliente[1];
     
+    //Construtor do veiculo
     public Veiculo(String marca, String modelo, int ano, int numero_chassi, Origem origem, String matricula) {
         this.marca = marca;
         this.modelo = modelo;
@@ -19,6 +20,7 @@ public class Veiculo{
         this.matricula = matricula;
     }
 
+    //Getters and setters
     public String getMarca() {
         return marca;
     }
