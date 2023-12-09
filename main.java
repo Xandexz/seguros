@@ -66,7 +66,7 @@ public class main {
                         System.out.println("Nome da sua matricula: ");
                         String matricula = scanner.next();
 
-                        System.out.println("----ORIGEM DO SEU VEICULO---- \n[1] Nacional \n[2] Importado ");
+                        System.out.println("----ORIGEM DO SEU VEICULO---- \n[1] NACIONAL \n[2] IMPORTADO ");
                         int org = scanner.nextInt();
 
                         if(org == 1){
@@ -119,7 +119,7 @@ public class main {
                         //System.out.println(Cliente.veiculos.);
                         do{
                             Scanner menu3 = new Scanner(System.in);
-                            System.out.println("----- MENU -----");
+                            System.out.println("----- DEFENIÇÕES DE USUÁRIO -----");
                             System.out.println("[1] Vizualizar veiculos cadastrados \n[2] Remover Veiculos \n[3] ");
                             option = menu2.nextInt();
                             switch (option) {
@@ -142,7 +142,7 @@ public class main {
                                     excluir -= 1;
 
                                     if(0 == Cliente.veiculos.size()){
-                                        System.out.println("NÃO TÊM NENHUM VEICULO CADASTRADO");
+                                        System.out.println("---NÃO TÊM NENHUM VEICULO CADASTRADO---");
                                     }else{
                                         System.out.println("---"+ mais1 +"º Veiculo será excluido---");
                                         System.out.println(Cliente.veiculos.get(excluir));
