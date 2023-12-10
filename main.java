@@ -9,7 +9,7 @@ public class main {
         do {
             Scanner menu2 = new Scanner(System.in);
             Scanner scanner = new Scanner(System.in);
-            System.out.println("[1] REGISTAR UTILIZADOR" );
+            System.out.println("[1] REGISTAR UTILIZADOR \n[0] SAIR DO PROGRAMA" );
             option = menu2.nextInt();
             switch (option) {
                 case 1:
