@@ -1,15 +1,21 @@
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class main {
     private Gerir gerir = new Gerir();
     public static void main(String[] args) {
-        int option = 0;
         // scanner para fazer o input do utilizador
-        Scanner menu = new Scanner(System.in);
+        Scanner menu2 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        int option;
         do {
-            Scanner menu2 = new Scanner(System.in);
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("[1] REGISTAR UTILIZADOR \n[0] SAIR DO PROGRAMA" );
+            System.out.println("[1] REGISTAR UTILIZADOR \n[0] SAIR DO PROGRAMA");
+            while (!menu2.hasNextInt()) {
+                System.out.println("Opção inválida. Deve ser um número inteiro.");
+                System.out.println("[1] REGISTAR UTILIZADOR \n[0] SAIR DO PROGRAMA");
+                menu2.next(); // limpa o buffer
+            }
             option = menu2.nextInt();
             switch (option) {
                 case 1:
@@ -17,20 +23,42 @@ public class main {
                     System.out.println("Nome: ");
                     String nome = scanner.nextLine();
 
-                    System.out.println("Data de nascimento: ");
-                    String dataNascimento = scanner.nextLine();
+                    String dataNascimento;
+                    do {
+                        System.out.println("Data de nascimento (formato DD/MM/AAAA): ");
+                        dataNascimento = scanner.nextLine();
+                        if (!isValidDataNascimento(dataNascimento)) {
+                            System.out.println("Data de nascimento inválida. Por favor, insira no formato correto.");
+                        }
+                    } while (!isValidDataNascimento(dataNascimento));
 
                     System.out.println("Morada: ");
                     String morada = scanner.nextLine();
 
-                    System.out.println("Número de identificação fiscal: ");
-                    int nif = scanner.nextInt();
+                    int nif;
+                    do {
+                        System.out.println("Número de identificação fiscal: ");
+                        while (!scanner.hasNextInt()) {
+                            System.out.println("Número de identificação fiscal inválido. Deve ser um número inteiro.");
+                            scanner.next(); // limpa o buffer
+                        }
+                        nif = scanner.nextInt();
+                    } while (nif <= 0);
+
+                    scanner.nextLine();
 
                     System.out.println("Número de cartão de cidadão: ");
                     String numero_cc = scanner.next();
 
-                    System.out.println("Salário: ");
-                    Float salario = scanner.nextFloat();
+                    float salario;
+                    do {
+                        System.out.println("Salário: ");
+                        while (!scanner.hasNextFloat()) {
+                            System.out.println("Salário inválido. Deve ser um número decimal.");
+                            scanner.next(); // limpa o buffer
+                        }
+                        salario = scanner.nextFloat();
+                    } while (salario <= 0);
 
                     Cliente clientes = new Cliente(nome, dataNascimento, morada, nif, numero_cc, salario);
                     Gerir.clientes.add(clientes);
@@ -45,27 +73,61 @@ public class main {
                         Scanner scanners = new Scanner(System.in);
                         System.out.println("----- MENU -----");
                         System.out.println("[1] CADASTRAR VEÍCULO \n[2] VISUALIZAR CAMPANHAS \n[3] DEFINIÇÕES AVANÇADAS");
-                        option = menu2.nextInt();
+                        while (!menu3.hasNextInt()) {
+                            System.out.println("Opção inválida. Deve ser um número inteiro.");
+                            System.out.println("----- MENU -----");
+                            System.out.println("[1] CADASTRAR VEÍCULO \n[2] VISUALIZAR CAMPANHAS \n[3] DEFINIÇÕES AVANÇADAS");
+                            menu3.next(); // limpa o buffer
+                        }
+                        option = menu3.nextInt();
                         switch (option) {
                             case 1:
-                                System.out.println("Marca do veiculo: ");
-                                String marca = " ";
-                                marca = scanners.next();
+
+                                String marca;
+                                do {
+                                    System.out.println("Marca do veículo: ");
+                                    marca = scanners.next();
+                                } while (marca.trim().isEmpty());
 
                                 System.out.println("Modelo: ");
                                 String modelo = scanners.next();
 
-                                System.out.println("Ano do seu veiculo: ");
-                                int ano = scanners.nextInt();
-
-                                System.out.println("Número de chassi: ");
-                                int chassi = scanners.nextInt();
+                                int ano;
+                                do {
+                                    System.out.println("Ano do seu veículo: ");
+                                    while (!scanners.hasNextInt()) {
+                                        System.out.println("Ano inválido. Deve ser um número inteiro.");
+                                        scanners.next(); // limpa o buffer
+                                    }
+                                    ano = scanners.nextInt();
+                                } while (ano <= 0);
+                                
+                                int chassi;
+                                do {
+                                    System.out.println("Número de chassi: ");
+                                    while (!scanners.hasNextInt()) {
+                                        System.out.println("Número de chassi inválido. Deve ser um número inteiro.");
+                                        scanners.next(); // limpa o buffer
+                                    }
+                                    chassi = scanners.nextInt();
+                                } while (chassi <= 0);
 
                                 System.out.println("Nome da sua matricula: ");
                                 String matricula = scanners.next();
 
-                                System.out.println("----ORIGEM DO SEU VEICULO---- \n[1] Nacional \n[2] Importado ");
-                                int org = scanners.nextInt();
+                                int org;
+                                do {
+                                    System.out.println("----ORIGEM DO SEU VEÍCULO---- \n[1] Nacional \n[2] Importado ");
+                                    while (!scanners.hasNextInt()) {
+                                        System.out.println("Opção inválida. Deve ser um número inteiro.");
+                                        scanners.next(); // limpa o buffer
+                                    }
+                                    org = scanners.nextInt();
+                                    if (org < 1 || org > 2) {
+                                        System.out.println("Opção inválida. Escolha 1 para Nacional ou 2 para Importado.");
+                                    }
+                                } while (org < 1 || org > 2);
+
 
                                 if(org == 1){
                                     Origem origem = Origem.NACIONAL;
@@ -114,8 +176,14 @@ public class main {
                             case 3:
                                 do{
                                     Scanner menu4 = new Scanner(System.in);
-                                    System.out.println("----- DEFENIÇÕES DE USUÁRIO -----");
-                                    System.out.println("[1] VISUALIZAR VEÍCULOS CADASTRADOS\n[2] REMOVER VEÍCULOS \n[3] OPÇÕES DE USUÁRIO");
+                                    System.out.println("----- DEFINIÇÕES AVANÇADAS -----");
+                                    System.out.println("[1] VISUALIZAR VEÍCULOS CADASTRADOS\n[2] REMOVER VEÍCULOS \n[3] OPÇÕES DE USUÁRIO \n[4] VOLTAR AO MENU");
+                                    while (!menu4.hasNextInt()) {
+                                        System.out.println("Opção inválida. Deve ser um número inteiro.");
+                                        System.out.println("----- DEFINIÇÕES AVANÇADAS -----");
+                                        System.out.println("[1] VISUALIZAR VEÍCULOS CADASTRADOS\n[2] REMOVER VEÍCULOS \n[3] OPÇÕES DE USUÁRIO \n[4] VOLTAR AO MENU");
+                                        menu4.next(); // limpa o buffer
+                                    }
                                     option = menu4.nextInt();
                                     switch (option) {
                                         case 1:
@@ -183,7 +251,13 @@ public class main {
                                             do{
                                                 Scanner menu5 = new Scanner(System.in);
                                                 System.out.println("----- DEFENIÇÕES DE USUÁRIO -----");
-                                                System.out.println("[1] VISUALIZAR PERFIL \n[2] VOLTAR AO MENU");
+                                                System.out.println("[1] VISUALIZAR PERFIL \n[2] VOLTAR A DEFINIÇÕES AVANÇADAS");
+                                                while (!menu5.hasNextInt()) {
+                                                    System.out.println("Opção inválida. Deve ser um número inteiro.");
+                                                    System.out.println("----- DEFENIÇÕES DE USUÁRIO -----");
+                                                    System.out.println("[1] VISUALIZAR PERFIL\n[2] VOLTAR A DEFINIÇÕES AVANÇADAS");
+                                                    menu5.next(); // limpa o buffer
+                                                }
                                                 option = menu5.nextInt();
                                                 switch(option){
                                                     case 1: 
@@ -211,23 +285,56 @@ public class main {
                                                         break;
                                                     case 2:
                                                         break;
-                                                    
+                                                    default:
+                                                        System.out.println("Opção inválida. Escolha 1 para VISUALIZAR PERFIL ou 2 para VOLTAR A DEFINIÇÕES AVANÇADAS.");
+                                                        break;
                                                 }
-                                            break;
+                                            if(option == 2){
+                                                break;
+                                            }
                                             }while (option != 0);
 
                                             break;
+                                        case 4:
+                                            break;
+                                        case 0:
+                                            System.out.println("PROGRAMA ENCERRADO.");
+                                            break;
+                                        default:
+                                            System.out.println("Opção inválida. Escolha 1 para VISUALIZAR VEÍCULOS CADASTRADOS, 2 REMOVER VEÍCULOS, 3 para OPÇÕES DE USUÁRIO ou 4 para VOLTAR AO MENU.");
+                                            break;
                                     }
-                                    break;
+                                    if(option == 4){
+                                        break;
+                                    }
                                 }while(option != 0);
-                    }
+                                break;
+                            case 0:
+                                System.out.println("PROGRAMA ENCERRADO.");
+                                break;
+                            default:
+                            System.out.println("Opção inválida. Escolha 1 para CADASTRAR VEÍCULO, 2 VISUALIZAR CAMPANHAS, 3 para DEFINIÇÕES AVANÇADAS.");
+                        }
 
                     }while (option != 0);
                     break;
                 
             //Se a opção for diferente que 0 o programa continua se for igual a 0 ele sai do loop
-        } while (option != 0);
+            case 0:
+                System.out.println("PROGRAMA ENCERRADO.");
+                break;
+            default:
+                System.out.println("Opção inválida. Escolha 1 para REGISTAR UTILIZADOR ou 0 para SAIR DO PROGRAMA.");
+        }
             
         }while (option != 0);
+    }
+
+        private static boolean isValidDataNascimento(String data) {
+        String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(\\d{4})$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(data);
+
+        return matcher.matches();
     }
 }
