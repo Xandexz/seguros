@@ -8,6 +8,7 @@ public class main {
         // scanner para fazer o input do utilizador
         Scanner menu2 = new Scanner(System.in);
         Scanner scanner = new Scanner(System.in);
+        //ola
         int option;
         do {
             System.out.println("[1] REGISTAR UTILIZADOR \n[0] SAIR DO PROGRAMA");
