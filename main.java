@@ -1,6 +1,4 @@
 import java.util.Scanner;
-//import java.util.regex.Matcher;
-//import java.util.regex.Pattern;
 
 public class main {
     private Gerir gerir = new Gerir();
@@ -22,18 +20,19 @@ public class main {
                     //Registrar o utilizador
                     System.out.println("Nome: ");
                     String nome = scanner.nextLine();
-
-                    //String dataNascimento;
-                    //do {
-                        //System.out.println("Data de nascimento (formato DD/MM/AAAA): ");
-                        //dataNascimento = scanner.nextLine();
-                        //if (!isValidDataNascimento(dataNascimento)) {
-                            //System.out.println("Data de nascimento inválida. Por favor, insira no formato correto.");
-                        //}
-                    //} while (!isValidDataNascimento(dataNascimento));
-
-                    System.out.println("Data de nascimento (formato DD/MM/AAAA): ");
-                    String dataNascimento = scanner.nextLine();
+                    
+                    String dataNascimento;
+                    do {
+                        System.out.print("Data de nascimento (formato DD/MM/AAAA): ");
+                        dataNascimento = scanner.nextLine();
+            
+                        if (validarDataNascimento(dataNascimento)) {
+                            System.out.println("Data de nascimento válida!");
+                            break; // Sai do loop se a data for válida
+                        } else {
+                            System.out.println("Data de nascimento inválida. Tente novamente.");
+                        }
+                    } while (true);
 
 
                     System.out.println("Morada: ");
@@ -334,11 +333,32 @@ public class main {
         }while (option != 0);
     }
 
-        //private static boolean isValidDataNascimento(String data) {
-        //String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(\\d{4})$";
-        //Pattern pattern = Pattern.compile(regex);
-        //Matcher matcher = pattern.matcher(data);
+        private static boolean validarDataNascimento(String dataNascimento) {
+            // Verifica se a string tem o formato esperado (DD/MM/AAAA)
+            if (dataNascimento.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                // Extrai dia, mês e ano
+                int dia = Integer.parseInt(dataNascimento.substring(0, 2));
+                int mes = Integer.parseInt(dataNascimento.substring(3, 5));
+                int ano = Integer.parseInt(dataNascimento.substring(6));
+    
+                // Verifica se a data é válida
+                if (mes >= 1 && mes <= 12 && dia >= 1 && dia <= diasNoMes(mes, ano)) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        //return matcher.matches();
-        //}
+        private static int diasNoMes(int mes, int ano) {
+            if (mes == 2) {
+                // Fevereiro tem 28 dias, exceto em anos bissextos
+                return (ano % 4 == 0 && (ano % 100 != 0 || ano % 400 == 0)) ? 29 : 28;
+            } else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) {
+                // Abril, junho, setembro e novembro têm 30 dias
+                return 30;
+            } else {
+                // Os outros meses têm 31 dias
+                return 31;
+            }
+        }    
 }
