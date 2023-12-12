@@ -1,6 +1,6 @@
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+//import java.util.regex.Matcher;
+//import java.util.regex.Pattern;
 
 public class main {
     private Gerir gerir = new Gerir();
@@ -23,14 +23,18 @@ public class main {
                     System.out.println("Nome: ");
                     String nome = scanner.nextLine();
 
-                    String dataNascimento;
-                    do {
-                        System.out.println("Data de nascimento (formato DD/MM/AAAA): ");
-                        dataNascimento = scanner.nextLine();
-                        if (!isValidDataNascimento(dataNascimento)) {
-                            System.out.println("Data de nascimento inválida. Por favor, insira no formato correto.");
-                        }
-                    } while (!isValidDataNascimento(dataNascimento));
+                    //String dataNascimento;
+                    //do {
+                        //System.out.println("Data de nascimento (formato DD/MM/AAAA): ");
+                        //dataNascimento = scanner.nextLine();
+                        //if (!isValidDataNascimento(dataNascimento)) {
+                            //System.out.println("Data de nascimento inválida. Por favor, insira no formato correto.");
+                        //}
+                    //} while (!isValidDataNascimento(dataNascimento));
+
+                    System.out.println("Data de nascimento (formato DD/MM/AAAA): ");
+                    String dataNascimento = scanner.nextLine();
+
 
                     System.out.println("Morada: ");
                     String morada = scanner.nextLine();
@@ -330,11 +334,11 @@ public class main {
         }while (option != 0);
     }
 
-        private static boolean isValidDataNascimento(String data) {
-        String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(\\d{4})$";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(data);
+        //private static boolean isValidDataNascimento(String data) {
+        //String regex = "^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(\\d{4})$";
+        //Pattern pattern = Pattern.compile(regex);
+        //Matcher matcher = pattern.matcher(data);
 
-        return matcher.matches();
-    }
+        //return matcher.matches();
+        //}
 }
