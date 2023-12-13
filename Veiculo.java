@@ -8,7 +8,6 @@ public class Veiculo{
     private Origem origem;
     private String matricula;
 
-    private Cliente[] cliente = new Cliente[1];
     
     //Construtor do veiculo
     public Veiculo(String marca, String modelo, int ano, int numero_chassi, Origem origem, String matricula) {
@@ -69,18 +68,10 @@ public class Veiculo{
         this.matricula = matricula;
     }
 
-    public Cliente[] getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente[] cliente) {
-        this.cliente = cliente;
-    }
-
     @Override
     public String toString() {
         return "Veiculo [marca=" + marca + ", modelo=" + modelo + ", ano=" + ano + ", numero_chassi=" + numero_chassi
-                + ", origem=" + origem + ", matricula=" + matricula + ", cliente=" + Arrays.toString(cliente) + "]";
+                + ", origem=" + origem + ", matricula=" + matricula + " ]";
     }
     
     

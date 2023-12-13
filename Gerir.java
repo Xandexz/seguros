@@ -3,11 +3,9 @@ import java.util.ArrayList;
 class Gerir{
 
     public static ArrayList<Cliente> clientes = new ArrayList<>();
-    public ArrayList<Campanhas> campanhas = new ArrayList<>();
+    public ArrayList<Campanha> campanhas = new ArrayList<>();
 
     public Gerir(){
-        Cliente cliente1 = new Cliente("AA", "AA", "AA", 1, "AA", 22.1f);
-        clientes.add(cliente1);
     }
 
     public boolean adicionarCliente(Cliente cl) {

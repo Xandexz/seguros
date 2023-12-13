@@ -151,14 +151,14 @@ public class main {
                                 System.out.println();
                                 //1ª campanha
                                 // criar uma campanha com o nome campanha1 e atribuindo valores de seguida dar print aos valores fazendo o mesmo para as outras campanhas
-                                Campanhas campanha1 = new Campanhas("Campanha nº1","Veiculos ligeiros", 200, "2 anos");
+                                Campanha campanha1 = new Campanha("Campanha nº1","Veiculos ligeiros", 200, "2 anos");
                                 System.out.println("-----"+ campanha1.getIdCampanhas()+ "-----");
                                 System.out.println("Dedicada a: "+ campanha1.getVeiculo());
                                 System.out.println("Com um preço de "+ campanha1.getPreco()+ "€");
                                 System.out.println("Tendo uma duração de: "+ campanha1.getDuracao());
                                 
                                 //2ª campanha
-                                Campanhas campanha2 = new Campanhas("Campanha nº2","Veiculos Pesados", 400, "1,5 anos");
+                                Campanha campanha2 = new Campanha("Campanha nº2","Veiculos Pesados", 400, "1,5 anos");
                                 System.out.println("-----"+ campanha2.getIdCampanhas()+ "-----");
                                 System.out.println("Dedicada a: "+ campanha2.getVeiculo());
                                 System.out.println("Com um preço de "+ campanha2.getPreco()+ "€");
@@ -166,7 +166,7 @@ public class main {
 
 
                                 //3ª campanha
-                                Campanhas campanha3 = new Campanhas("Campanha nº3","Motociclos", 200, "1 anos");
+                                Campanha campanha3 = new Campanha("Campanha nº3","Motociclos", 200, "1 anos");
                                 System.out.println("-----"+ campanha3.getIdCampanhas()+ "-----");
                                 System.out.println("Dedicada a: "+ campanha3.getVeiculo());
                                 System.out.println("Com um preço de "+ campanha3.getPreco()+ "€");

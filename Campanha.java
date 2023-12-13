@@ -1,12 +1,12 @@
 
-public class Campanhas {
+public class Campanha {
     private String idCampanhas;
     private String Veiculo;
     private int Preco;
     private String Duracao;
     
     // construtor das campanhas
-    public Campanhas(String idCampanhas, String veiculo, int preco, String duracao) {
+    public Campanha(String idCampanhas, String veiculo, int preco, String duracao) {
         this.idCampanhas = idCampanhas;
         Veiculo = veiculo;
         Preco = preco;
